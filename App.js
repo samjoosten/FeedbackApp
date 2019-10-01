@@ -11,6 +11,7 @@ class HomeScreen extends React.Component {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>Home Screen</Text>
+                <Text>Ik verbouw deze file voor GIT</Text>
                 <Button
                     title="Feedback"
                     onPress={() => this.props.navigation.navigate('Details')}
