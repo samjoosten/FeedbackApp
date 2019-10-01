@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {Text, TouchableHighlight, View, Alert, TextInput, StyleSheet, Dimensions, Image} from 'react-native';
-import PropTypes from 'prop-types'
+import {Text, TouchableHighlight, View, Alert, TextInput, StyleSheet, Dimensions, Image, Platform} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
+import DeviceInfo from 'react-native-device-info'
 import Smile50 from './smileform/SmileyForm'
 
 export default class FeedbackScreen extends Component {
@@ -11,7 +11,9 @@ export default class FeedbackScreen extends Component {
             modalVisible: false,
             text: '',
             smile: 1,
-            image: ''
+            image: '',
+            deviceInfo: '',
+            deviceOs: ''
         };
         this.submit = this.submit.bind(this);
         this.newSmiley = this.newSmiley.bind(this);
@@ -23,19 +25,26 @@ export default class FeedbackScreen extends Component {
 
     submit() {
         if (this.state.text) {
-            console.log(this.state.smile);
-            fetch('https://feedbackapp-40461.firebaseio.com/feedback.json', {
-                method: 'POST',
-                body: JSON.stringify({
-                    feedback: this.state.text,
-                    smiley: this.state.smile,
-                    image: this.state.image
+            DeviceInfo.getDeviceName().then(deviceName => {
+                this.setState({
+                    deviceInfo: deviceName,
+                    deviceOs: Platform.OS
+                });
+                fetch('https://feedbackapp-40461.firebaseio.com/feedback.json', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        feedback: this.state.text,
+                        smiley: this.state.smile,
+                        image: this.state.image,
+                        deviceInfo: this.state.deviceInfo,
+                        deviceOs: this.state.deviceOs
+                    })
                 })
+                    .then(res => console.log(res))
+                    .catch(err => console.log(err));
+                this.setState({text: ''});
+                this.props.navigation.navigate('Home')
             })
-                .then(res => console.log(res))
-                .catch(err => console.log(err));
-            this.setState({text: ''})
-            this.props.navigation.navigate('Home')
         } else {
             Alert.alert("Please fill in the textfield")
         }
@@ -87,7 +96,7 @@ export default class FeedbackScreen extends Component {
                                 <Text style={styles.btnText}>Choose Photo</Text>
                             </TouchableHighlight>
                             <Image source={this.state.image} style={styles.image}/>
-                            <Smile50 onNewSmiley={this.newSmiley}/>
+                            <Smile50  onNewSmiley={this.newSmiley}/>
                             <TouchableHighlight style={[styles.button, {backgroundColor: '#0984e3'}]}
                                                 onPress={this.submit}
                                                 underlayColor="#74b9ff">
@@ -104,14 +113,11 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
-        marginTop: 10,
-        marginBottom: 30
     },
     buttonContainer: {
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',
-        margin: 5
     },
     modalHeader: {
         fontSize: 30,
@@ -126,10 +132,10 @@ const styles = StyleSheet.create({
         padding: 5,
         margin: 5,
         width: Dimensions.get('window').width - 50,
-        height: 100
+        height: 70
     },
     button: {
-        margin: 5,
+        marginBottom: 20,
         padding: 10,
         alignSelf: 'center',
         width: Dimensions.get('window').width - 50,

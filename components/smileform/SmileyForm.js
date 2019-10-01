@@ -79,7 +79,7 @@ export default class Smile50 extends Component {
                     { parseInt(multiLine(this.state.val)) }
                 </Text>
                 <Slider
-                    style={{ width: 300 }}
+                    style={{ width: 200, transform: [{ scaleX: 1.5 }, { scaleY: 1.5 }] }}
                     step={1}
                     minimumValue={1}
                     maximumValue={25}
@@ -102,12 +102,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
-        marginBottom: 20
     },
     title: {
         fontSize: 30,
         textAlign: 'center',
-        margin: 30,
+        margin: 20,
     },
     rating: {
         textAlign: 'center',
