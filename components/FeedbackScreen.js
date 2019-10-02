@@ -24,7 +24,7 @@ export default class FeedbackScreen extends Component {
 
     componentDidMount() {
         const {navigation} = this.props;
-        const appName = navigation.getParam('app', 'devault-value');
+        const appName = navigation.getParam('app', 'default-value');
         this.setState({ appName: appName })
     }
 
