@@ -103,3 +103,5 @@ ios/Pods/Target Support Files/RNDeviceInfo/RNDeviceInfo-prefix.pch
 ios/Pods/Target Support Files/RNDeviceInfo/RNDeviceInfo.xcconfig
 node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj/project.pbxproj
 node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj/project.pbxproj
+android/local.properties
+android/local.properties
