@@ -91,3 +91,4 @@ RNTester/Pods/*
 /schema-rncore.json
 android/local.properties
 node_modules/react-native/ReactAndroid/src/main/java/com/facebook/react/modules/systeminfo/AndroidInfoModule.java
+android/local.properties

@@ -14,7 +14,7 @@ class HomeScreen extends React.Component {
                 <Text>Ik verbouw deze file voor GIT</Text>
                 <Button
                     title="Feedback"
-                    onPress={() => this.props.navigation.navigate('Details')}
+                    onPress={() => this.props.navigation.navigate('Detadfsils')}
                 />
             </View>
         );
