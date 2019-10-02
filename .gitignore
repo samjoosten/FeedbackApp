@@ -90,3 +90,4 @@ RNTester/Pods/*
 /ReactCommon/fabric/components/rncore/
 /schema-rncore.json
 android/local.properties
+node_modules/react-native/ReactAndroid/src/main/java/com/facebook/react/modules/systeminfo/AndroidInfoModule.java
