@@ -13,12 +13,19 @@ export default class FeedbackScreen extends Component {
             smile: 1,
             image: '',
             deviceInfo: '',
-            deviceOs: ''
+            deviceOs: '',
+            appName: ''
         };
         this.submit = this.submit.bind(this);
         this.newSmiley = this.newSmiley.bind(this);
         this.imagePickerHandler = this.imagePickerHandler.bind(this);
 
+    }
+
+    componentDidMount() {
+        const {navigation} = this.props;
+        const appName = navigation.getParam('app', 'devault-value');
+        this.setState({ appName: appName })
     }
 
 
@@ -33,6 +40,7 @@ export default class FeedbackScreen extends Component {
                 fetch('https://feedbackapp-40461.firebaseio.com/feedback.json', {
                     method: 'POST',
                     body: JSON.stringify({
+                        appName: this.state.appName,
                         feedback: this.state.text,
                         smiley: this.state.smile,
                         image: this.state.image,
@@ -60,7 +68,6 @@ export default class FeedbackScreen extends Component {
             },
         };
         ImagePicker.showImagePicker(options, (response) => {
-            console.log('Response = ', response);
 
             if (response.didCancel) {
                 console.log('User cancelled image picker');
@@ -81,10 +88,11 @@ export default class FeedbackScreen extends Component {
     }
 
     render() {
+        var appText = this.state.appName;
         return (
                     <View style={styles.container}>
                         <View>
-                            <Text style={styles.modalHeader}>Give us your thoughts!</Text>
+                            <Text style={styles.modalHeader}>Give us your thoughts about {appText}!</Text>
 
                             <TextInput style={styles.txtInput}
                                        numberOfLines = {4}

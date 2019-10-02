@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
+import {View, Text, Button, StyleSheet, TouchableHighlight, Image} from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -9,12 +9,19 @@ class HomeScreen extends React.Component {
 
     render() {
         return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>Home Screen</Text>
-                <Button
-                    title="Feedback"
-                    onPress={() => this.props.navigation.navigate('Details')}
-                />
+            <View style={styles.container}>
+                <TouchableHighlight style={styles.button}
+                                    onPress={() => this.props.navigation.navigate('Details', {
+                                        app: 'NPO start'
+                                    })}>
+                    <Image style={styles.logoImg} source={require('./npo_start_logo.jpeg')}/>
+                </TouchableHighlight>
+                <TouchableHighlight style={styles.button}
+                                    onPress={() => this.props.navigation.navigate('Details', {
+                                        app: 'ZiggoGo'
+                                    })}>
+                    <Image style={styles.logoImg} source={require('./ziggogo_logo.jpeg')}/>
+                </TouchableHighlight>
             </View>
         );
     }
@@ -40,3 +47,28 @@ export default class App extends React.Component {
         return <AppContainer />;
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        backgroundColor: '#ecf0f1'
+    },
+    button: {
+        margin: 10,
+        alignSelf: 'flex-start',
+        borderRadius: 10,
+    },
+    btnText: {
+        textAlign: 'center',
+        fontSize: 17,
+        color: 'white'
+    },
+    logoImg: {
+        width: 170,
+        height: 100,
+        borderRadius: 10,
+        overflow: 'hidden'
+    }
+})
