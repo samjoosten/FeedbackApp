@@ -18,7 +18,7 @@ class HomeScreen extends React.Component {
                 </TouchableHighlight>
                 <TouchableHighlight style={styles.button}
                                     onPress={() => this.props.navigation.navigate('Details', {
-                                        app: 'ZiggoGo'
+                                        app: 'ZiggoeGo'
                                     })}>
                     <Image style={styles.logoImg} source={require('./ziggogo_logo.jpeg')}/>
                 </TouchableHighlight>
