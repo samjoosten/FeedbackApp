@@ -92,3 +92,14 @@ RNTester/Pods/*
 android/local.properties
 node_modules/react-native/ReactAndroid/src/main/java/com/facebook/react/modules/systeminfo/AndroidInfoModule.java
 android/local.properties
+android/local.properties
+ios/Pods/Headers/Private/RNDeviceInfo/DeviceUID.h
+ios/Pods/Headers/Private/RNDeviceInfo/RNDeviceInfo.h
+ios/Pods/Headers/Public/RNDeviceInfo/DeviceUID.h
+ios/Pods/Headers/Public/RNDeviceInfo/RNDeviceInfo.h
+ios/Pods/Local Podspecs/RNDeviceInfo.podspec.json
+ios/Pods/Target Support Files/RNDeviceInfo/RNDeviceInfo-dummy.m
+ios/Pods/Target Support Files/RNDeviceInfo/RNDeviceInfo-prefix.pch
+ios/Pods/Target Support Files/RNDeviceInfo/RNDeviceInfo.xcconfig
+node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj/project.pbxproj
+node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj/project.pbxproj
