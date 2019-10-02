@@ -13,7 +13,7 @@ class HomeScreen extends React.Component {
                 <Text>Home Screen</Text>
                 <Text>Ik verbouw deze file voor GIT</Text>
                 <Button
-                    title="Feedback"
+                    title="Feedbfdsfack"
                     onPress={() => this.props.navigation.navigate('Detadfdsffsils')}
                 />
             </View>
